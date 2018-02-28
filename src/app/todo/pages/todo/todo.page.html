@@ -1,0 +1,12 @@
+<a routerLink="../">Back</a>
+<h2>{{todo?.task || 'Todo'}}</h2>
+
+<p *ngIf="loading">Loading...</p>
+
+<div *ngIf="!loading">
+  <p>Due {{todo?.dueDate | date:'medium'}}</p>
+
+  <button [disabled]="todo?.done" (click)="do()">
+    Done
+  </button>
+</div>
