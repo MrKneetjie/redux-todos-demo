@@ -3,7 +3,7 @@
 <p *ngIf="loading">Loading...</p>
 
 <ul *ngIf="!loading">
-  <li *ngFor="let todo of todos">
+  <li *ngFor="let todo of (todos$ | async)">
     <a [routerLink]="['./', todo.id]">
       <span *ngIf="!todo.done">{{todo.task}} - due {{todo.dueData | date}}</span>
       <s *ngIf="todo.done">{{todo.task}} - due {{todo.dueData | date}}</s>
