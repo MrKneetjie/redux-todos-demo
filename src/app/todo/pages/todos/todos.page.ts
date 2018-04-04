@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { NgRedux } from "@angular-redux/store";
+import { select } from "@angular-redux/store";
 import { Subject } from "rxjs/Subject";
 import "rxjs/add/operator/takeUntil";
 
-import { Todos, TodoState, TodosActioncreator, Todo, TodoActioncreator } from "../../store";
+import { Todo, Todos } from "../../store";
 
 @Component({
   selector: "todos-page",
@@ -16,21 +16,10 @@ export class TodosPageComponent implements OnInit, OnDestroy {
   private destroy$: Subject<boolean> = new Subject<boolean>();
 
   constructor(
-    private ngRedux: NgRedux<TodoState>,
-    private todosActions: TodosActioncreator,
-    private todoActions: TodoActioncreator
   ) {}
 
   public ngOnInit(): void {
-    this.ngRedux
-      .select("todos")
-      .takeUntil(this.destroy$)
-      .subscribe((todos: Todos) => this.todos = todos);
-
-    this.todosActions.fetchTodos().then(
-      () => this.loading = false,
-      () => this.loading = false
-    );
+    // fetch todos, toggle loading
   }
 
   public ngOnDestroy(): void {
@@ -38,6 +27,6 @@ export class TodosPageComponent implements OnInit, OnDestroy {
   }
 
   public do(todo: Todo): void {
-    this.todoActions.do(todo);
+    alert("done");
   }
 }

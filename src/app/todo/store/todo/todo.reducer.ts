@@ -8,15 +8,15 @@ export const todoReducer: Reducer<Todo> = (
   action: TodoAction
 ): Todo => {
   if (action.type === TODO_LOAD) {
-    return {...action.todo};
+    // update todo in state
   }
 
   if (action.type === TODO_CLEAR) {
-    return null;
+    // clear todo in state
   }
 
   if (action.type === TODO_DONE && state && action.todo.id === state.id) {
-    return {...action.todo};
+    // update todo in state
   }
 
   return state;

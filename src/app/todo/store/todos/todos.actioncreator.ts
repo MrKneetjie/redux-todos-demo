@@ -15,18 +15,11 @@ export class TodosActioncreator {
   ) {}
 
   public fetchTodos(): Promise<void> {
-    if (this.ngRedux.getState().todos.length) {
-      return Promise.resolve();
-    }
-
-    return this.todosService.fetchTodos()
-      .then((todos: Todos) => this.loadTodos(todos));
+    // fetch todos with todosService
+    return Promise.resolve();
   }
 
   public loadTodos(todos: Todos): void {
-    this.ngRedux.dispatch({
-      type: TODOS_LOAD,
-      todos,
-    });
+    // dispatch load todos action
   }
 }

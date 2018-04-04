@@ -9,20 +9,11 @@ export const todosReducer: Reducer<Todos> = (
   action: TodosAction
 ): Todos => {
   if (action.type === TODOS_LOAD) {
-    return [...action.todos];
+    // update todos in state
   }
 
   if (action.type === TODO_DONE) {
-    return [...state.map((todo: TodoListItem) => {
-      if (todo.id !== action.todo.id) {
-        return todo;
-      }
-
-      return {
-        ...todo,
-        done: true,
-      };
-    })];
+    // update done state of todo in state found by todo in action
   }
 
   return state;

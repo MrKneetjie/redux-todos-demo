@@ -15,32 +15,24 @@ export class TodoActioncreator {
   ) {}
 
   public fetchTodo(id: string): Promise<void> {
-    return this.todoService.fetchTodo(id)
-      .then((todo: Todo) => this.loadTodo(todo));
+    // fetch todo with service, call loadTodo
+    return Promise.resolve();
   }
 
   public loadTodo(todo: Todo): void {
-    this.ngRedux.dispatch({
-      type: TODO_LOAD,
-      todo,
-    });
+    // dispatch load todo action
   }
 
   public clearTodo(): void {
-    this.ngRedux.dispatch({
-      type: TODO_CLEAR,
-    });
+    // dispatch clear todo action
   }
 
   public do(todo: Todo): Promise<void> {
-    return this.todoService.do(todo)
-      .then((todo: Todo) => this.loadDone(todo));
+    // set todo done with todoservice, update todo with loadDone
+    return Promise.resolve();
   }
 
   public loadDone(todo): void {
-    this.ngRedux.dispatch({
-      type: TODO_DONE,
-      todo,
-    });
+    // dispatch todo done action
   }
 }

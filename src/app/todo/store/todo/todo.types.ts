@@ -4,6 +4,7 @@ export interface Todo {
   id: string;
   task: string;
   dueDate: Date;
+  done: boolean;
 }
 
 export interface TodoAction extends Action {
